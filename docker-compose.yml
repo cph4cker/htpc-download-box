@@ -13,6 +13,21 @@ services:
     ports:
       - 8112:8112 # port for deluge web UI to be reachable from local network
     command: '-r 192.168.1.0/24' # route local network traffic
+	
+  organizr:
+	container_name: organizr
+	image: lsioarmhf/organizr-aarch64
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - PUID=1000 # default user id, for downloaded files access rights
+      - PGID=1000 # default group id, for downloaded files access rights
+      - TZ=Europe/Paris # timezone
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${HOME}/.config/organizr:/config # config files
+	ports:
+	  - 80:80
 
   deluge:
     container_name: deluge
@@ -95,3 +110,16 @@ services:
       - ${HOME}/.plex/db:/config # plex database
       - ${HOME}/.plex/transcode:/transcode # temp transcoded files
       - /media/${USER}/data1/downloads:/data # media library
+	  
+	  
+  portainer:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data  
+	  
+volumes:
+  portainer_data:
