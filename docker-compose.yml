@@ -15,8 +15,8 @@ services:
     command: '-r 192.168.1.0/24' # route local network traffic
 
   organizr:
-	container_name: organizr
-	image: lsioarmhf/organizr-aarch64
+    container_name: organizr
+    image: lsioarmhf/organizr-aarch64
     restart: unless-stopped
     network_mode: host
     environment:
@@ -26,8 +26,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${HOME}/.config/organizr:/config # config files
-	ports:
-	- 80:80
+    ports:
+      - 80:80
 
   deluge:
     container_name: deluge
@@ -110,8 +110,8 @@ services:
       - ${HOME}/.plex/db:/config # plex database
       - ${HOME}/.plex/transcode:/transcode # temp transcoded files
       - /media/${USER}/data1/downloads:/data # media library
-	  
-	  
+  
+  
   portainer:
     image: portainer/portainer
     ports:
@@ -120,6 +120,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data  
-	  
+  
 volumes:
   portainer_data:
