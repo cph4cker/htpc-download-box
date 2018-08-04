@@ -13,7 +13,7 @@ services:
     ports:
       - 8112:8112 # port for deluge web UI to be reachable from local network
     command: '-r 192.168.1.0/24' # route local network traffic
-	
+
   organizr:
 	container_name: organizr
 	image: lsioarmhf/organizr-aarch64
@@ -27,7 +27,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ${HOME}/.config/organizr:/config # config files
 	ports:
-	  - 80:80
+	- 80:80
 
   deluge:
     container_name: deluge
