@@ -14,20 +14,7 @@ services:
       - 8112:8112 # port for deluge web UI to be reachable from local network
     command: '-r 192.168.1.0/24' # route local network traffic
 
-  organizr:
-    container_name: organizr
-    image: lsioarmhf/organizr-aarch64
-    restart: unless-stopped
-    network_mode: host
-    environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
-      - TZ=Europe/Paris # timezone
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${HOME}/.config/organizr:/config # config files
-    ports:
-      - 80:80
+  
 
   deluge:
     container_name: deluge
