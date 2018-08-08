@@ -22,8 +22,8 @@ services:
     restart: always
     network_mode: service:vpn # run on the vpn network
     environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
+      - PUID=27 # default user id, for downloaded files access rights
+      - PGID=27 # default group id, for downloaded files access rights
       - TZ=Europe/Paris # timezone
     volumes:
       - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
@@ -35,8 +35,8 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
+      - PUID=27 # default user id, for downloaded files access rights
+      - PGID=27 # default group id, for downloaded files access rights
       - TZ=Europe/Paris # timezone
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -49,8 +49,8 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
+      - PUID=27 # default user id, for downloaded files access rights
+      - PGID=27 # default group id, for downloaded files access rights
       - TZ=Europe/Paris # timezone
     volumes:
       - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
@@ -62,8 +62,8 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
+      - PUID=27 # default user id, for downloaded files access rights
+      - PGID=27 # default group id, for downloaded files access rights
       - TZ=Europe/Paris # timezone
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -77,8 +77,8 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
+      - PUID=27 # default user id, for downloaded files access rights
+      - PGID=27 # default group id, for downloaded files access rights
       - TZ=Europe/Paris # timezone
     volumes:
       - /etc/localtime:/etc/localtime:ro
