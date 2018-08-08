@@ -11,14 +11,14 @@ services:
       - /dev/net/tun:/dev/net/tun # tun device
       - ${HOME}/.vpn:/vpn # OpenVPN configuration
     ports:
-      - 9091:9091 # port for deluge web UI to be reachable from local network
-    command: '-r 192.168.1.0/24' # route local network traffic
+      - 8112:8112 # port for deluge web UI to be reachable from local network
+    command: '-r 10.31.0.0/24' # route local network traffic
 
   
 
-  transmission:
-    container_name: transmissione
-    image: linuxserver/transmission
+  deluge:
+    container_name: deluge
+    image: linuxserver/deluge:latest
     restart: always
     network_mode: service:vpn # run on the vpn network
     environment:
@@ -27,7 +27,7 @@ services:
       - TZ=Europe/Paris # timezone
     volumes:
       - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
-      - ${HOME}/.config/transmission:/config # config files
+      - ${HOME}/.config/deluge:/config # config files
 
   jackett:
     container_name: jackett
