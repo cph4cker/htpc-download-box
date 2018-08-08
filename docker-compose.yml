@@ -26,7 +26,7 @@ services:
       - PGID=1000 # default group id, for downloaded files access rights
       - TZ=Europe/Paris # timezone
     volumes:
-      - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
+      - /media/pi/data1/downloads/ongoing:/downloads # download folder
       - ${HOME}/.config/deluge:/config # config files
 
   jackett:
@@ -40,7 +40,7 @@ services:
       - TZ=Europe/Paris # timezone
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /media/${USER}/data1/downloads/ongoing/torrent-blackhole:/downloads # place where to put .torrent files
+      - /media/pi/data1/downloads/ongoing/torrent-blackhole:/downloads # place where to put .torrent files
       - ${HOME}/.config/jackett:/config # config files
 
   sonarr:
@@ -55,8 +55,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${HOME}/.config/sonarr:/config # config files
-      - /media/${USER}/data1/downloads/series:/tv # tv shows folder
-      - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
+      - /media/pi/data1/downloads/series:/tv # tv shows folder
+      - /media/pi/data1/downloads/ongoing:/downloads # download folder
 
   radarr:
     container_name: radarr
@@ -70,8 +70,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${HOME}/.config/radarr:/config # config files
-      - /media/${USER}/data1/downloads/movies:/movies # movies folder
-      - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
+      - /media/pi/data1/downloads/movies:/movies # movies folder
+      - /media/pi/data1/downloads/ongoing:/downloads # download folder
 
   
       
@@ -90,7 +90,7 @@ services:
     network_mode: host
     volumes:
       - ${HOME}/.config/emby:/config # config files
-      - /media/${USER}/data1/downloads:/media # media library
+      - /media/pi/data1/downloads:/media # media library
   
   portainer:
     image: portainer/portainer
