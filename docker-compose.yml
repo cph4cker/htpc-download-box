@@ -43,19 +43,6 @@ services:
       - /media/${USER}/data1/downloads/ongoing/torrent-blackhole:/downloads # place where to put .torrent files
       - ${HOME}/.config/jackett:/config # config files
 
-  nzbget:
-    container_name: nzbget
-    image: linuxserver/nzbget:latest
-    restart: unless-stopped
-    network_mode: host
-    environment:
-      - PUID=1000 # default user id, for downloaded files access rights
-      - PGID=1000 # default group id, for downloaded files access rights
-      - TZ=Europe/Paris # timezone
-    volumes:
-      - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
-      - ${HOME}/.config/nzbget:/config # config files
-
   sonarr:
     container_name: sonarr
     image: linuxserver/sonarr:latest
