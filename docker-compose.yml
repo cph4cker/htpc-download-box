@@ -16,7 +16,7 @@ services:
 
   
 
-   deluge:
+  deluge:
     container_name: deluge
     image: linuxserver/deluge:latest
     restart: always
