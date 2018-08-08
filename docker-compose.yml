@@ -86,17 +86,24 @@ services:
       - /media/${USER}/data1/downloads/movies:/movies # movies folder
       - /media/${USER}/data1/downloads/ongoing:/downloads # download folder
 
-  plex-server:
-    container_name: plex-server
-    image: plexinc/pms-docker:latest
+  
+      
+  emby:
+    container_name: emby
+    image: dperson/emby:latest
     restart: unless-stopped
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+      - "7359:7359/udp"
+      - "1900:1900/udp"
+      
     environment:
       - TZ=Europe/Paris # timezone
     network_mode: host
     volumes:
-      - ${HOME}/.plex/db:/config # plex database
-      - ${HOME}/.plex/transcode:/transcode # temp transcoded files
-      - /media/${USER}/data1/downloads:/data # media library
+      - ${HOME}/.config/emby:/config # config files
+      - /media/${USER}/data1/downloads:/media # media library
   
   portainer:
     image: portainer/portainer
@@ -110,7 +117,3 @@ services:
 
 volumes:
   portainer_data:
-  
-  
-  
-
